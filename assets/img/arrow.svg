@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="252px" height="24px" viewBox="0 0 252 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="arrow" sketch:type="MSLayerGroup" transform="translate(0.000000, 11.000000)" fill="#000000">
+            <rect id="Rectangle-20" sketch:type="MSShapeGroup" x="0" y="0" width="250" height="3"></rect>
+        </g>
+        <rect id="Rectangle-21" fill="#000000" sketch:type="MSShapeGroup" transform="translate(244.471582, 7.586174) rotate(-45.000000) translate(-244.471582, -7.586174) " x="242.971582" y="-0.191951428" width="3" height="15.5562502"></rect>
+        <rect id="Rectangle-21" fill="#000000" sketch:type="MSShapeGroup" transform="translate(244.975077, 16.977864) scale(-1, 1) rotate(-45.000000) translate(-244.975077, -16.977864) " x="243.475077" y="9.19973839" width="3" height="15.5562502"></rect>
+    </g>
+</svg>

@@ -1,0 +1,18 @@
+// Mixin for remove :hover in Safari iOS
+hover( class = 'no-touch' )
+  .{class} &:hover
+    {block}
+
+rm-unit(n)
+  if typeof(n) is 'unit'
+    unit(n, '')
+  else
+    n
+
+// REMER
+$root-font-size = 16px
+
+rems( target )
+  a = rm-unit( target )
+  b = rm-unit( $root-font-size )
+  return unit( a/b, rem )

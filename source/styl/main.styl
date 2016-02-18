@@ -1,0 +1,1877 @@
+@import 'core/core'
+@import 'jeet'
+
+// edit( red )
+
+body
+  background-color $white
+  -webkit-tap-highlight-color transparent
+  transition opacity 90ms linear, margin-top 220ms
+  opacity 0
+  +mobile()
+    +landscape()
+      position fixed
+      top 0
+      right 0
+      bottom 0
+      left 0
+      overflow hidden
+  &.load
+    opacity 1
+  +desktop()
+    position relative
+    min-width 768px
+
+a
+  cursor url('/assets/img/cursor.png'), pointer !important
+  cursor -webkit-image-set( url('/assets/img/cursor.png') 1x, url('/assets/img/cursor_hi.png') 2x ), pointer !important
+
+b
+  font-weight normal
+
+/* ==========================================================================
+   Utility classes
+   ========================================================================== */
+.black
+  color $zero
+
+.grey
+  color $grey
+
+.white
+  color $white
+
+.bold
+  FigginsBold()
+
+.normal
+.sans
+  Figgins()
+
+.thin
+  FigginsThin()
+
+.serif
+  William()
+
+.underline
+  border-bottom 2px solid
+
+.s-show
+.touch
+  display block
+  +desktop()
+    display none
+
+
+.desktop
+  display none
+  +desktop()
+    display block
+
+.s-hide
+  display none
+  +desktop()
+    display inline-block
+
+.relative
+  position relative
+
+.block
+  display block
+
+/* Downer
+   ========================================================================== */
+.downer_wrap
+  display none
+  .transition  &
+    display block
+    position fixed
+    right 0
+    bottom 0
+    left 0
+    width 100%
+    max-width 1480px
+    margin auto
+    z-index 999
+    transition bottom 220ms
+    &.is-absolute
+      position absolute
+      bottom 0
+    +between( 768px, 1024px )
+      display none
+    +mobile()
+      display none
+
+.downer
+  display block
+  position absolute
+  z-index 999
+  bottom rems( 24 )
+  right rems(56)
+  width 46px
+  height 46px
+  color $zero
+  text-align center
+  transition color 240ms
+  .is-light &
+     color $white
+  &_arr
+    display inline-block
+    position absolute
+    left 19px
+    bottom -3px
+    width 8px
+    height 5px
+    background-image url('../../assets/img/downer-arr.png')
+    background-size 100% 100%
+    transition transform 400ms, bottom 400ms 400ms
+    .is-up &
+      transform rotate(-180deg)
+      bottom 44px
+    .is-light &
+      background-image url('../../assets/img/downer-arr-light.png')
+  &_line
+    display inline-block
+    width 2px
+    height 46px
+    background-image url('../../assets/img/downer-line.png')
+    background-size cover
+    .is-light &
+      background-image url('../../assets/img/downer-line-light.png')
+
+.fixline
+  +mobile()
+    display none
+  +desktop()
+    position fixed
+    right 0
+    left 0
+    z-index 99
+    transform translateY( -51% )
+    transition transform 300ms ease-in-out
+    &.is-open
+      transform translateY( 0 )
+    &.is-hide
+      transform translateY( -100% )
+
+// B-U-R-G-E-R
+.burger
+  +desktop()
+    height 100%
+    line-height rems(80)
+    background-color $zero
+    .club &
+      background-color #1a1a1a
+      border-bottom 1px solid $grey
+  &-body
+    center( 1480px, rems(72) )
+    height 100%
+    text-align left
+    white-space nowrap
+    +between( 768px, 1024px )
+      +portrait()
+        center( 1024px, rems(27) )
+  &-link
+    color $grey
+    padding 1em 0 // << Fitts
+    margin-left rems(60)
+    FigginsBold()
+    letter-spacing .25em
+    transition color 300ms ease-in-out
+    font-size rems(9)
+    &:first-child
+      margin-left rems( 72 )
+    +hover()
+      color white
+    &[data-link="current"]
+      color white
+      +hover()
+        color $white
+
+/* Navigation
+   ========================================================================== */
+.nav
+  display none
+  +desktop()
+    display block
+    cf()
+    z-index 999
+    height rems( 80 )
+    line-height rems( 80 )
+    background-color rgba(white, .99)
+
+  &_inside
+    padding 0 rems(72)
+    margin auto
+    max-width 1480px
+    +between( 768px, 1024px )
+      +portrait()
+        padding 0 rems(27)
+
+  &_logo
+    display block
+    float left
+    line-height rems(87)
+    font-size rems(33)
+
+  &_list
+    position relative
+    text-align left
+    white-space nowrap
+    margin-left rems(72)
+    height rems(80)
+
+  &_link
+    padding 1em 0 // << Fitts
+    margin-left rems(60)
+    FigginsBold()
+    letter-spacing .25em
+    transition color 300ms ease-in-out
+    color $grey
+    font-size rems(9)
+    &:first-child
+      margin-left 0
+    +hover()
+      color $zero
+
+  .close
+    position absolute
+    right 0
+    top 50%
+    margin-top -17px
+    width 30px
+    height 30px
+    cursor pointer
+    +hover()
+      .close-line
+        background-color $zero
+        &.light
+          background-color #fff
+    &-body
+      position relative
+      width 30px
+      height 30px
+      transform rotate(0)
+      transition transform 400ms ease
+    &-item
+      position absolute
+      top 0
+      display block
+      width 30px
+      height 30px
+      transition transform 400ms ease, opacity 200ms ease
+    &-line
+      position absolute
+      display block
+      width 30px
+      height 2px
+      background-color $grey
+      top 50%
+      margin-top -1px
+      transition transform 400ms ease, top 400ms ease, background-color 300ms ease-in-out
+      &.top
+        transform translateY(-9px)
+      &.bottom
+        transform translateY( 9px )
+      &.center
+        opacity 1
+
+    &.is-open
+      .close-body
+        transform rotate( 90deg )
+      .close-item
+        &.top
+          transform rotate( -45deg )
+        &.bottom
+          transform rotate( 45deg )
+        &.center
+          opacity 0
+      .close-line
+        &.top
+          transform translate( 0 )
+        &.bottom
+          transform translate( 0 )
+
+// sbanner
+[data-os="android"]
+  display none
+  .android
+    display block
+    +between( 768px, 1024px )
+      display none
+    +desktop()
+      display none
+  .android .banner-v2-is-show &
+    display none
+    +desktop()
+      display none
+  .android .banner-v1-is-show &
+    display block
+    +between( 768px, 1024px )
+      display none
+  .android .is-sbanner-hide &
+    display none
+
+
+[data-os="ios"]
+  display none
+  .ios
+    display block
+    +between( 768px, 1024px )
+      display none
+    +desktop()
+      display none
+  .ios .banner-v2-is-show &
+    display none
+    +desktop()
+      display none
+  .ios .banner-v1-is-show &
+    display block
+    +between( 768px, 1024px )
+      display none
+  .ios .is-sbanner-hide &
+    display none
+
+[data-os="universal"]
+  display none
+  .banner-v2-is-show &
+    display block
+    +between( 768px, 1024px )
+      display none
+    +desktop()
+      display none
+
+.sbanner
+  position fixed
+  top 0
+  right 0
+  left 0
+  z-index 999
+  border-bottom 1px solid alpha( $grey, 50% )
+  height rems(72)
+  background-color #f2f2f2
+  transform translateY(0)
+  transition transform 220ms
+  [data-os="android"]&
+    background-color white
+    border-bottom 1px solid $grey
+  [data-os="universal"]&
+    background-color #f9d9e4
+  .is-sbanner-hide &
+    display none
+  &-body
+    cf()
+    padding 0 rems( 18 )
+  &-close
+    align( vertical )
+    left 0
+    line-height 0
+    height rems(18)
+    width rems(18)
+    &-body
+      position relative
+      top rems(4)
+      left rems(5)
+      width rems(11)
+      height rems(11)
+    &-item
+      display block
+      position absolute
+      top 0
+      left 0
+      width rems(11)
+      height rems(11)
+      &.top
+        transform rotate( -45deg )
+      &.bottom
+        transform rotate( 45deg )
+    &-line
+      position relative
+      top rems(5)
+      display block
+      width rems(11)
+      height 1px
+      background-color $grey
+      [data-os="android"] &
+        background-color #696969
+        height 2px
+        top rems(4.5)
+        border-radius 1px
+  &-logo
+    align( vertical )
+    .icon
+      top rems(9)
+      font-size rems(72)
+      left rems(2)
+      [data-os="android"] &
+        left rems(2)
+  &-caption
+    position relative
+    height rems(72)
+    margin-left rems(63)
+    text-transform none
+    font-size rems(10)
+    [data-os="android"] &
+      margin-left rems(66)
+      font-size rems(11)
+      color #444444
+    [data-os="universal"] &
+      margin-left 0
+      font-size rems(10)
+      Figgins()
+    .upc
+      text-transform uppercase
+      letter-spacing .08em
+      [data-os="universal"] &
+        letter-spacing .18em
+    .big
+      font-size rems(12)
+      line-height 1
+      [data-os="android"] &
+        font-size rems(18)
+      [data-os="universal"] &
+        font-size rems(18)
+    .star
+      height rems(9)
+      margin-bottom rems(3)
+    &-body
+      align( vertical )
+      margin-top rems(3)
+      width 100%
+      [data-os="android"] &
+        position static
+        margin-top rems(16)
+        transform none
+      [data-os="universal"] &
+        margin-top rems(3)
+        line-height 1.9
+  &-link
+    align( vertical )
+    display block
+    right 0
+    font-size rems(15)
+    color #366bb3
+    [data-os="android"] &
+      border 1px solid $grey
+      color #39add7
+      margin-top rems(3)
+      padding rems(12) rems(19)
+      padding-bottom rems(9)
+      border-radius 7px
+      font-size rems(10)
+    [data-os="universal"] &
+      font-size rems(10)
+      background-color white
+      padding rems(8) rems(29)
+      border-radius 7px
+      color $zero
+      margin-top -3px
+
+.touch-burger
+  position absolute
+  left 0
+  right 0
+  top -100%
+  transform translateY( -100% )
+  transition transform 260ms
+  opacity 0
+  &.is-show
+    top rems(62)
+    opacity 1
+  &.is-open
+    transform translateY( -1px )
+  &-body
+    background-color #1a1a1a
+  &-link
+    display block
+    color white
+    vertical-align middle
+    border-bottom 1px solid white
+    display block
+    height rems( 62 )
+    line-height rems( 62 )
+    text-align center
+    letter-spacing .16em
+    &:last-child
+      border-bottom none
+
+.touch-fixline
+  background-color #1a1a1a
+  height rems( 62 )
+  text-align center
+  line-height rems( 62 )
+  margin-top rems( 72 )
+  position relative
+  z-index 998
+  transition margin-top 220ms
+  .is-sbanner-hide &
+    margin-top 0
+  +desktop()
+    display none
+  .i-logo-bold
+    color white
+    font-size rems( 42 )
+    top rems(6)
+  &-body
+    position relative
+    z-index 2
+    height rems( 62 )
+    background-color #1a1a1a
+  .close
+    position absolute
+    right rems( 18 )
+    top 50%
+    margin-top -17px
+    width 30px
+    height 30px
+    cursor pointer
+    &-body
+      position relative
+      width 30px
+      height 30px
+      transform rotate(0)
+      transition transform 220ms ease
+    &-item
+      position absolute
+      top 0
+      display block
+      width 30px
+      height 30px
+      transition transform 220ms ease, opacity 200ms ease
+    &-line
+      position absolute
+      display block
+      width 30px
+      height 1px
+      background-color white
+      top 50%
+      transition transform 220ms ease, top 220ms ease, background-color 300ms ease-in-out
+      &.top
+        transform translateY(-9px)
+      &.bottom
+        transform translateY( 9px )
+      &.center
+        opacity 1
+
+    &.is-open
+      .close-body
+        transform rotate( 90deg )
+      .close-item
+        &.top
+          transform rotate( -45deg )
+        &.bottom
+          transform rotate( 45deg )
+        &.center
+          opacity 0
+      .close-line
+        &.top
+          transform translate( 0 )
+        &.bottom
+          transform translate( 0 )
+
+/* WRAP
+   ========================================================================== */
+.wrap
+  padding-bottom rems(18)
+  padding-top rems(24)
+  .club &
+    padding-bottom 0
+  +desktop()
+    position relative
+    padding-top rems(80)
+    padding-bottom rems(24)
+    .club &
+      padding-bottom rems(24)
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero
+  padding 0 0 rems(27)
+  position relative
+
+  &_inside
+    max-width 1480px
+    margin auto
+
+  &_title
+    margin 0
+    line-height 1
+    letter-spacing .12em
+    font-size rems(50)
+    padding 0 rems(18) 0
+    .i-peach
+      font-size rems(62)
+      left rems(-2)
+      bottom rems(0)
+      margin-right rems(2)
+    .i-loly
+      position absolute
+      top rems(30)
+      right rems(-60)
+      font-size rems(62)
+    +desktop()
+      padding 0 rems(72) 0
+      font-size rems(80)
+      line-height 1
+      .pure-wrap
+        position relative
+        top rems(4)
+        margin-left rems(-6)
+      .line-a
+        margin-left rems(-6)
+      .i-peach
+        font-size rems(104)
+        left rems(-6)
+        bottom rems(-2)
+      .i-loly
+        position absolute
+        top rems(55)
+        right rems(-100)
+        font-size rems(118)
+    +between( 768px, 1024px )
+      +portrait()
+        padding 0 rems(27)
+
+    &_pure
+      position relative
+      display block
+      right rems(-5)
+      margin-bottom rems(10)
+      +desktop()
+        margin-bottom rems(8)
+      img
+        display block
+        height .85em
+
+  .pure_dash
+    position absolute
+    display block
+    margin auto
+    background-color $zero
+    top rems(-4)
+    bottom 0
+    height rems(3)
+    width rems(95)
+    left rems(185)
+    +desktop()
+      width rems( 260 )
+      height rems( 4.5 )
+      left rems( 305 )
+
+  &_download
+    display none
+    +desktop()
+      position absolute
+      display block
+      padding rems(66) 0 0 rems(72)
+      line-height 1.3
+      +between( 768px, 1024px )
+        +portrait()
+          padding 0 rems(36)
+      &_link
+        color $grey
+        display inline-block
+        margin-bottom rems(12)
+        font-size rems(18)
+        letter-spacing .12em
+        transition color 300ms ease-in-out
+        &:last-of-type
+          margin-bottom 0
+        +hover()
+          color $zero
+        .i-apple
+          font-size rems(38)
+          margin-left rems(4)
+          margin-right rems(4)
+        .i-play
+          font-size rems(38)
+          margin-left rems(7)
+          margin-right rems(4)
+
+  &_image
+    overflow hidden
+    background-image url('/assets/img/hero.gif')
+    background-size auto 100%
+    background-position center bottom
+    background-repeat no-repeat
+    height 17.625em
+    margin .5em 0 .5em
+    margin-left -24%
+    +between( 375px, 667px )
+      height 23em
+    +desktop()
+      margin rems(45) 0 rems(-54) rems(-60)
+      height rems(540)
+
+  &_caption
+    color $grey
+    font-size rems(13)
+    letter-spacing .35ex
+    line-height 1.7
+    margin 0
+    padding 0 rems(18)
+    +desktop()
+      margin-top 0
+      bottom rems(24)
+      padding 0 rems(72)
+      width 100%
+      font-size rems(18)
+    +between( 768px, 1024px )
+      +portrait()
+        padding 0 rems(27)
+    .i-pure
+      font-size rems(13)
+      margin-right rems(32)
+      +desktop()
+        top rems(-1)
+        font-size rems(19)
+        margin-right rems(48)
+
+
+/* ==========================================================================
+   ANONYMITY
+   ========================================================================== */
+.anonim
+  position relative
+  overflow hidden
+  height 100vh
+  +mobile( orientation: landscape )
+    min-height rems(440)
+  +between( 375px, 667px )
+    min-height rems(540)
+  +between(414px, 736px)
+    +landscape()
+      min-height rems(470)
+  +desktop()
+    min-height rems(500)
+
+  &_inside
+    position absolute
+    top 0
+    right 0
+    left 0
+    bottom 0
+    max-width 1480px
+    margin auto
+
+  &_image
+    height 100%
+    overflow hidden
+    background-image url('/assets/img/anonim.gif')
+    background-repeat no-repeat
+    background-size 73%
+    background-position center 3%
+    +between(414px, 736px)
+      background-size 75% auto
+      background-position center 10%
+    +between( 375px, 667px )
+      background-size 97% auto
+      background-position center 5%
+    +desktop()
+      position absolute
+      top -14%
+      right 0
+      left 0
+      bottom 0
+      height 100%
+      width 100%
+      margin 0
+      background-size auto 67%
+      background-position center
+
+  &_caption
+    position absolute
+    width 100%
+    bottom rems(34)
+    padding 0 1.125em
+    +desktop()
+      padding 0 rems(72) 0
+    +between( 768px, 1024px )
+      +portrait()
+        padding 0 rems(27)
+
+  &_title
+    FigginsBold()
+    font-size rems(24)
+    margin-bottom rems(20)
+    letter-spacing .3em
+    line-height .9
+    color $zero
+    +desktop()
+      margin 0 0 rems(24)
+      font-size rems(28)
+
+    .i-shell-2
+      font-size rems(46)
+      top rems(-2)
+      margin 0 rems(5)
+
+  &_p
+    margin 0
+    font-size rems(13)
+    letter-spacing .35ex
+    color $grey
+    line-height 1.7
+    +desktop()
+      font-size rems(18)
+
+/* ==========================================================================
+   RIGHT NOW
+   ========================================================================== */
+.here
+  position relative
+  background-color #1a1a1a
+  height 100vh
+  +mobile( orientation: landscape )
+    min-height rems(440)
+  +between( 375px, 667px )
+    min-height rems(540)
+  +between(414px, 736px)
+    +landscape()
+      min-height rems(470)
+  +desktop()
+    min-height rems(500)
+
+  &_inside
+    position absolute
+    top 0
+    right 0
+    left 0
+    bottom 0
+    max-width 1480px
+    margin auto
+    +desktop()
+      padding 0 rems(72)
+
+  &_image
+    height 100%
+    margin 0
+    overflow hidden
+    background-image url('/assets/img/here.gif')
+    background-size 100% auto
+    background-position center 8%
+    background-repeat no-repeat
+    +between( 375px, 667px )
+      background-size 110% auto
+      background-position center 20%
+    +between(414px, 736px)
+      background-size 100% auto
+      background-position center 30%
+    +desktop()
+      position absolute
+      top 0
+      right 0
+      left 0
+      bottom 0
+      height 100%
+      width 100%
+      margin 0
+      background-size auto 76%
+      background-position 57% 10%
+      +between(768px, 900px)
+        background-size auto 76%
+
+  &_caption
+    @extend .anonim_caption
+    padding 0
+    position absolute
+    bottom rems(34)
+    padding 0 0 0 rems(18)
+    left 0
+    +desktop()
+      padding 0 rems(72)
+    +between( 768px, 1024px )
+      +portrait()
+        padding 0 rems(27)
+        left 0
+
+  &_title
+    @extend .anonim_title
+    color $white
+
+    .i-mark
+      display none
+      +desktop()
+        display inline-block
+        top rems(2)
+        font-size rems(52)
+        margin 0 rems(10)
+
+  &_p
+    @extend .anonim_p
+
+/* ==========================================================================
+   MUTUAL
+   ========================================================================== */
+.mutual
+  position relative
+  overflow hidden
+  height 100vh
+  background-color #1b1b1b
+  +mobile( orientation: landscape )
+    min-height rems(440)
+  +between( 375px, 667px )
+    min-height rems(540)
+  +between(414px, 736px)
+    +landscape()
+      min-height rems(470)
+  +desktop()
+    min-height rems(500)
+
+  &_inside
+    max-width 1480px
+    margin auto
+
+  &_image
+    height 100%
+    overflow hidden
+    background-image url('/assets/img/reciprocity.gif')
+    background-size 100% auto
+    background-position 3.2em 7%
+    background-repeat no-repeat
+    +between(414px, 736px)
+      background-size 110% auto
+      background-position -110% 26%
+    +between( 375px, 667px )
+      background-size 120% auto
+      background-position -40% 26%
+    +desktop()
+      position absolute
+      top 0
+      right 0
+      left 0
+      bottom 0
+      height 100%
+      width 100%
+      margin 0
+      background-size auto 80%
+      background-position 62% 32%
+    +between( 768px, 1024px )
+      +portrait()
+        background-size 90%
+        background-position 160% center
+      +landscape()
+        background-position 76% center
+
+  &_caption
+    @extend .anonim_caption
+    padding-top 0
+    +desktop()
+      bottom rems(34)
+
+  .i-rose
+    font-size rems(46)
+    top rems(4)
+    margin 0 rems(5)
+    margin-left rems(8)
+
+  &_title
+    @extend .anonim_title
+    color $white
+
+  &_p
+    @extend .anonim_p
+
+/* ==========================================================================
+   MANIFEST
+   ========================================================================== */
+.manifest
+  padding rems(34) 0 0
+  +desktop()
+    margin-bottom rems(144)
+    padding rems(48) 0 0
+
+  &_inside
+    padding 0 rems(18)
+    +desktop()
+      max-width 1480px
+      margin auto
+      padding 0 rems(72)
+    +between( 768px, 1024px )
+      +portrait()
+        padding 0 rems(27)
+
+  &_title
+    FigginsBold()
+    letter-spacing .3em
+    font-size rems(13)
+    color $zero
+    margin 0
+
+  &_p
+    margin 0
+    font-size rems(13)
+    letter-spacing .15em
+    line-height 1.7
+    padding rems(24) 0 0
+    color $grey
+    +desktop()
+      font-size rems(18)
+      padding rems(24) 0 0
+      margin-right rems(200)
+    .i-pure
+      top rems(-1)
+      font-size rems(13)
+      margin-right rems(32)
+      +desktop()
+        top rems(-1)
+        margin-right rems(48)
+        font-size rems( 19 )
+
+/* ==========================================================================
+   DOWNLOAD
+   ========================================================================== */
+.download
+  text-align center
+  padding rems(72) 0 rems(78)
+  border-bottom 0
+  line-height 1.7
+  +desktop()
+      display none
+  &_link
+    font-size 1.5em
+    letter-spacing .12em
+    .club &
+      color $white
+  .i-download
+    top rems(6)
+    margin-right rems(6)
+    font-size rems(46)
+  .left-indent
+    margin-left rems(-10)
+
+
+/* ==========================================================================
+   PREFOOTER
+   ========================================================================== */
+.prefooter
+  display none
+  +desktop()
+    line-height 1.3
+    display block
+    text-align center
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer_lg
+  +mobile()
+    display none
+
+
+  &-inside
+    cf()
+    padding 0 rems(72)
+    max-width 1480px
+    margin auto
+    +between( 768px, 1024px )
+      +portrait()
+        padding 0 rems(27)
+
+  &-cell
+    column( 1/4, cycle: 4 )
+
+  &-social
+    &-title
+      margin 0 0 rems(8)
+      font-size rems(9)
+      letter-spacing .12em
+
+  &-mail
+    display inline-block
+    vertical-align top
+    margin 0 0 rems(-2)
+    &-title
+      margin 0
+      margin-top rems(20)
+      margin-bottom rems(6)
+      font-size rems(9)
+      letter-spacing .12em
+
+  &-txt
+    font-size rems(9)
+    letter-spacing .12em
+    margin 0 0 rems(24)
+    color $grey
+    &.no-margin
+      margin-bottom 0
+
+  &-link
+    border-bottom 1px solid
+    transition color 300ms ease-in-out
+    +hover()
+      color $grey
+
+
+.footer_sm
+  +desktop()
+    display none
+
+  &-inside
+    clearfix()
+    padding 0
+
+  &-col
+    float left
+    padding 0 rems(18)
+    width 50%
+
+  &-sip
+    margin-bottom rems(25)
+
+  &-social
+    margin-bottom rems(26)
+    &-title
+      font-size rems(9)
+      letter-spacing .12em
+      margin 0 0 rems(8)
+
+  &-mail
+    margin-top rems(-5)
+    &-title
+      font-size rems(9)
+      letter-spacing .12em
+      margin 0 0 rems(8)
+
+  &-link
+    border-bottom 1px solid
+    transition color 300ms ease-in-out
+
+  &-txt
+    margin 0 0 rems(24)
+    font-size rems(9)
+    letter-spacing .12em
+
+  .no-margin
+    margin-bottom 0
+
+
+.footer
+  border-top 1px solid alpha( $grey, 50% )
+  margin 0 auto 0
+  padding rems(27) 0
+  line-height 1.5
+  color $grey
+  cf()
+
+  .social-icon
+    transition color 220ms
+    +hover()
+      color $zero
+
+  .i-pure
+    font-size rems(9)
+    margin-right rems(24)
+
+  .i-right-arr
+    top rems(1.5)
+    font-size rems(20)
+    +mobile()
+      top rems(1.5)
+
+  .i-fb
+    margin-right rems(6)
+    font-size rems(36)
+  .i-im
+    font-size rems(36)
+  .i-tw
+    margin-right rems(6)
+    font-size rems(36)
+  .i-mail
+    font-size rems(34)
+
+
+
+.colophone
+  margin-top rems(18)
+  font-size 0
+  +desktop()
+    margin-top rems(-4)
+    column(1/5)
+
+  &-title
+    display inline-block
+    vertical-align middle
+    width 80%
+    font-size rems(9)
+    letter-spacing .12em
+    line-height 1.5
+    +desktop()
+      width 75%
+
+  &-image
+    width 26%
+    margin-left rems(-8)
+    padding-right rems(3)
+    display inline-block
+    vertical-align middle
+    +desktop()
+      width 25%
+
+  a
+    border-bottom 1px solid
+    transition color 300ms
+    +hover()
+      color $grey
+
+.faq,
+.policy,
+.terms
+  .topline
+    display none
+    +desktop()
+      display block
+      position fixed
+      top 0
+      right 0
+      left 0
+      clearfix()
+      z-index 999
+      height rems(80)
+      min-width 768px
+      line-height rems(80)
+      background-color rgba(white, .99)
+      transform translateY(0)
+      transition transform 220ms ease-in-out
+      &.is-hide
+        transform translateY(-6.25em);
+    &-inside
+      padding 0 rems(72)
+      margin auto
+      max-width 1480px
+      cf()
+      +between( 768px, 1024px )
+        +portrait()
+          padding 0 rems(27)
+    &-logo
+      display block
+      float left
+      line-height rems(81)
+      font-size rems(33)
+    &-back
+      float right
+      &-link
+        padding 1em 0 // << Fitts
+        margin-left rems(60)
+        FigginsBold()
+        letter-spacing .25em
+        transition color 300ms ease-in-out
+        color $grey
+        font-size rems(9)
+        +hover()
+          color $zero
+
+  .contents
+    margin-bottom rems(20)
+    +desktop()
+      display block
+      position static
+      height auto
+      line-height 1
+      margin-bottom rems(150)
+      margin-top rems( 0 )
+    &-list
+      padding 0
+      margin 0
+      list-style none
+    &-item
+      margin-bottom rems(2)
+      line-height 1.8
+      &:last-of-type
+        margin-bottom 0
+    &-link
+      display inline-block
+      padding rems(9) rems(9) rems(9) 0
+      letter-spacing .16em
+      position relative
+      &-sym
+        position absolute
+        top rems( 28 )
+        left rems(-2)
+        color $grey
+        transition color 220ms
+        +desktop()
+          position relative
+          top rems(5)
+          &.vis
+            position absolute
+            top rems( 28 )
+        &.icon
+          font-size rems(30)
+      &-indent
+        display inline-block
+        margin-left rems( 40 )
+        +desktop()
+          display inline
+          margin-left 0
+          &.vis
+            display inline-block
+            margin-left rems( 40 )
+      &-title
+        FigginsThin()
+        color $grey
+        border-bottom 1px solid transparent
+        transition border-bottom 300ms ease-in-out, color 300ms ease-in-out
+        .i-pure
+          top rems(0)
+          margin-right rems( 40 )
+          font-size rems( 17 )
+      .contents-link-icon
+        display none
+      .icon
+        +desktop()
+          display inline-block
+          &.i-tube
+            font-size rems( 32 )
+            top rems(5)
+            margin-left rems(2)
+          &.i-vint
+            font-size rems( 31 )
+            top rems(-2)
+          &.i-storm
+            font-size rems( 34 )
+            top rems(4)
+            margin-left rems(2)
+            margin-right rems(-3)
+          &.i-vint-3
+            font-size rems( 36 )
+            top rems(-2)
+            margin-left rems(2)
+            margin-right rems(-2)
+          &.i-money
+            font-size rems( 30 )
+            top rems(3)
+            margin-left rems(3)
+          &.i-cuffs
+            font-size rems( 30 )
+            top rems(2)
+            margin 0 rems(2)
+          &.i-mark
+            font-size rems( 40 )
+          &.i-rose
+            font-size rems( 36 )
+            top rems(4)
+            margin-left rems(3)
+          &.i-sign
+            font-size rems(33)
+            margin-left rems(-1)
+            margin-right rems(-4)
+            top rems(4)
+      +hover()
+        .contents-link-sym
+          color $zero
+        .contents-link-title
+          border-bottom 1px solid
+          color $zero
+
+  .wrap
+    padding rems(24) 1.125em 0
+    margin auto
+    +desktop()
+      position relative
+      padding rems(80) rems(72) rems( 24 )
+      max-width 1480px
+    +between( 768px, 1024px )
+      +portrait()
+        padding rems(80) rems(27) rems( 18 )
+
+  .article
+    &-unit
+      margin-bottom rems( 60 )
+      padding-top rems( 62 )
+      position relative
+      +desktop()
+        margin-bottom rems(155)
+        padding-top rems( 20 )
+        width 79%
+    &-col
+      &.first
+        float left
+        width 50%
+        margin-bottom rems(4)
+    &-unit-title
+      FigginsThin()
+      font-size rems(24)
+      margin-bottom rems(14)
+      margin-top 0
+      letter-spacing .22em
+      line-height 1.5
+      color $grey
+      font-weight normal
+      position relative
+      +desktop()
+        position relative
+        margin 0 0 rems(6)
+        font-size rems(28)
+      &-number
+        &.icon
+          position relative
+          left rems(-1)
+          bottom rems(16)
+          font-size rems(46)
+          color $grey
+          &.i-17
+            font-size rems(41)
+            bottom rems(18)
+          &.i-20,
+          &.i-19,
+          &.i-18,
+          &.i-21
+            left rems(-1)
+            font-size rems(60)
+            bottom rems(18)
+          &.i-20
+            left rems(-5)
+            font-size rems(54)
+            bottom rems(18)
+          &.i-21
+            botom rems(18)
+          +desktop()
+            position absolute
+            top rems(27)
+            left rems(-4)
+            &.i-17
+              top rems(30)
+            &.i-21,
+            &.i-20,
+            &.i-19,
+            &.i-18
+              top rems(24)
+              font-size rems( 58 )
+      .i-pure
+        color $zero
+        position relative
+        top rems(-1)
+        margin-right rems(60)
+        font-size rems(25)
+        +desktop()
+          top rems(-2)
+          left 0
+          margin-right rems(68)
+          font-size rems(28)
+      &-inside
+        display block
+        margin-left rems( 60 )
+        +mobile()
+          margin-left 0
+    &-unit-text
+      cf()
+      position relative
+      margin 0
+      font-size rems(13)
+      margin-bottom rems( 24 )
+      color $grey
+      line-height 1.7
+      font-family William
+      text-transform none
+      +desktop()
+        font-size rems(18)
+        margin-bottom rems( 24)
+      &__no-b-margin
+        +desktop()
+          margin-bottom 0
+      .gap
+        +desktop()
+          display inline-block
+          margin-left rems( 60)
+      .i-pure
+        top rems(1)
+        margin-right rems(26)
+        font-size rems(10)
+        +desktop()
+          margin-right rems( 34 )
+          font-size rems(13.5)
+      &.last
+        margin-bottom 0
+      .cursive
+        WilliamItalic()
+        font-size 1em
+        color $zero
+
+  .prefooter
+    margin-top rems( 155 )
+
+  .download
+    margin-top 0
+    padding-top 0
+
+  .uppercase
+    font-size .72em
+    letter-spacing .12em
+    text-transform uppercase
+
+  .to-top
+    position absolute
+    display block
+    width 8px
+    height 58px
+    background-image url('/assets/img/touch-arr.png')
+    background-size 100%
+    right 0
+    top rems(74)
+    z-index 99
+    +desktop()
+      display none
+
+
+  .article-link
+    Figgins()
+    border-bottom 1px solid
+    transition color 300ms ease-in-out
+    +hover()
+      color $grey
+      border-bottom 1px solid
+
+.fooReveal
+  visibility hidden
+
+.policy
+  .article
+    &-unit
+      padding-top 0
+    &-unit-list
+      margin 0
+      padding 0
+      list-style none
+    &-unit-item
+      display block
+      color $grey
+      position relative
+      font-family William
+      text-transform none
+      line-height 1.7
+      font-size rems(13)
+      margin-bottom rems(24)
+      padding-left rems( 40 )
+      +desktop()
+        font-size rems(18)
+        margin-bottom rems(24)
+        padding-left rems( 50 )
+      &:last-of-type
+        margin-bottom 0
+      &:before
+        content ''
+        position absolute
+        left 0
+        top rems( 10 )
+        display block
+        width rems( 30 )
+        height 1px
+        background-color $grey
+        +desktop()
+          top rems( 13 )
+          width rems( 40 )
+          height 2px
+      .cursive
+        WilliamItalic()
+        font-size 1em
+        color $zero
+
+.terms
+.policy
+  .articles
+    +desktop()
+      margin-top rems( -15 )
+  .first-list
+    +desktop()
+      margin-left rems( 60 )
+  .second-list
+    margin-left rems( 50 )
+    +desktop()
+      margin-left rems( 120 )
+
+  .download
+    +mobile()
+      margin-top 0
+
+  .caption
+    FigginsThin()
+    line-height 1.8
+    letter-spacing .12em
+    text-transform uppercase
+    font-size rems( 9 )
+    color $grey
+    &-link
+      Figgins()
+      transition color 300ms ease-in-out
+      border-bottom 1px solid
+      color $zero
+      +hover()
+        color $grey
+    +desktop()
+      font-size rems( 13 )
+      width 60%
+      margin-left rems( 60 )
+
+.download
+  .faq &
+    +mobile()
+      margin-top rems(80)
+
+.terms-bullet
+  letter-spacing .12em
+  text-transform uppercase
+  Figgins()
+  color $zero
+  font-size .72em
+  +desktop()
+    position absolute
+    text-align right
+    width rems( 50 )
+    left rems( -60 )
+    top rems( 4.5 )
+
+.terms
+  .wrap
+    padding-top rems(48)
+  .article
+    &-unit
+      +mobile()
+        margin-bottom rems(120)
+        padding-top 0
+  .download
+    padding-top rems( 72 )
+
+.policy
+  .article
+    &-unit
+      +mobile()
+        margin-bottom rems(120)
+      +desktop()
+        width 72%
+      &.last
+        +mobile()
+          margin-bottom rems(80)
+      &-text
+        &.last
+          +mobile()
+            margin-bottom 0
+
+[data-gap]
+  display block
+
+[data-gap="40"]
+  height rems( 55 )
+  +desktop()
+    height rems( 155 )
+
+.club
+  background-color #1a1a1a
+  .nav
+    background-color #1a1a1a
+    &_logo
+      color white
+
+  .downer
+    &_arr
+      background-image url('../../assets/img/downer-arr-light.png')
+    &_line
+      background-image url('../../assets/img/downer-line-light.png')
+
+  .main-title
+    FiginsThin()
+    margin 0
+    margin-bottom rems( 75 )
+    color $grey
+    font-size rems( 58 )
+    text-align center
+    font-weight normal
+    line-height 1.1
+    letter-spacing .12em
+    +desktop()
+      font-size rems( 100 )
+      margin-bottom rems( 100 )
+
+  .rule
+    center( rems( 691 ), rems(18) )
+    margin-bottom rems( 55 )
+    +desktop()
+      margin-bottom rems( 85 )
+      center( rems( 691 ), 0 )
+    &:last-of-type
+      margin-bottom 0
+      +desktop()
+        margin-bottom rems( 150 )
+    &-number
+      text-align center
+      margin-bottom rems(18)
+      +desktop()
+        margin-bottom rems(32)
+      span
+        color $grey
+        font-size rems(60)
+    &-card
+      height rems( 180 )
+      background-color #fff
+      +desktop()
+        height rems( 364 )
+
+    .card
+      cf()
+      &-img
+        span(1/2)
+        position relative
+        width 50%
+        height 100%
+        background-color #f9dbe4
+        overflow hidden
+        img
+          display block
+          height 100%
+          margin auto
+          position relative
+          &.a
+            top rems(10)
+            +mobile()
+              top rems(5)
+              left rems(4)
+          &.b
+            height auto
+            width 100%
+            top rems(10)
+            +mobile()
+              top rems(20)
+          &.c
+            height 90%
+            top 5%
+            left rems(-10)
+            +mobile()
+              left rems(-5)
+          &.d
+            margin 0
+            height 95%
+            top rems(10)
+            +mobile()
+              left rems(-8)
+              top rems(5)
+          &.e
+            height 93%
+          &.f
+            height 90%
+            top rems(20)
+            left rems(-8)
+            +mobile()
+              top rems(10)
+              left rems(-2)
+          &.g
+            height 94%
+            top rems(8)
+            left rems(-12)
+            +mobile()
+              top rems(4)
+              left rems(-5)
+      &-text
+        span(1/2)
+        position relative
+        width 50%
+        height 100%
+        padding rems(20) rems(16)
+        +desktop()
+          padding rems(34) rems(30)
+      &-caption
+        position absolute
+        margin 0
+        bottom rems(8)
+        left rems(12)
+        +desktop()
+          bottom rems( 16 )
+          left rems( 26 )
+        &-text
+          margin 0
+          FigginsThin()
+          font-size rems( 12 )
+          line-height (39/27)
+          letter-spacing .14em
+          color $grey
+          +desktop()
+            font-size rems( 28 )
+      &-title
+        margin-left rems(-4)
+        font-size rems( 12 )
+        margin-top rems(0)
+        +desktop()
+          margin-top rems(5)
+          font-size rems( 30 )
+      &-networks
+        position relative
+        margin-left rems(-4)
+        margin-top rems(16)
+        +desktop()
+          margin-left rems(-4)
+          margin-top rems(33)
+        &-link
+          margin-right rems(11)
+          font-size rems(34)
+          color $grey
+          transition color 220ms
+          &:last-of-type
+            margin-right 0
+          +desktop()
+            margin-right rems(10)
+            font-size rems(48)
+          +hover()
+            color $zero
+          &.i-vk
+            position relative
+            font-size rems(31)
+            +desktop()
+              top rems(1.5)
+              font-size rems(44)
+
+  .footer-social-link
+    transition color 220ms
+    +hover()
+      color $white
+
+  .hero_download_link
+    +hover()
+      color $white
+
+.faq
+  .article
+    &-unit
+      margin-bottom rems( 20 )
+      padding-top rems( 102 )
+      position relative
+
+// Screen for landscape
+// all overflow hidden
+.landscape-download
+  display none
+  +mobile()
+    +landscape()
+      display block
+      position fixed
+      top 0
+      right 0
+      bottom 0
+      left 0
+      background-color #f9dbe4
+      background-image url('/assets/img/ushki.png')
+      background-size 45%
+      background-repeat no-repeat
+      background-position center bottom
+      z-index 9999
+      &-body
+        align(both)
+        top 37%
+        width 82%
+        text-align center
+        color $grey
+        font-size rems(14)
+        line-height 1.4
+        letter-spacing .12em
+        text-transform none
+        William()
+        letter-spacing normal
+      &-link
+        border-bottom 2px solid
+      .icon
+        font-size rems(22)
+        color $zero
+      .uppercase
+        font-size .73em
+        text-transform uppercase
+        letter-spacing .12em

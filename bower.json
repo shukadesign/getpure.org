@@ -1,0 +1,11 @@
+{
+  "name": "getpure.org",
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "scrollreveal": "~3.0.9",
+    "cookie": "~1.1.0",
+    "Flowtype.js": "~1.1.0",
+    "velocity": "~1.2.3",
+    "detection": "https://github.com/mynamesleon/detection.git"
+  }
+}

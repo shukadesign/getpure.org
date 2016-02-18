@@ -1,0 +1,49 @@
+*
+  box-sizing border-box
+
+html
+  FigginsThin()
+  font-size @root-font-size
+  line-height 1.35
+  text-transform uppercase
+  color $zero
+
+  text-rendering optimizeLegibility
+  font-smoothing antialiased
+
+
+// Remove rounded corners in iOS Safari
+textarea
+input
+  -webkit-appearance none
+  border-radius 0
+
+h1
+  font-weight normal
+
+i
+  font-style normal
+
+a
+  color $zero
+  text-decoration none
+
+// Utility classes
+.black
+  color $zero
+
+.grey
+  color $grey
+
+.white
+  color $white
+
+.bold
+  FigginsBold()
+
+.normal
+.sans
+  Figgins()
+
+.serif
+  William()
