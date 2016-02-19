@@ -399,11 +399,9 @@ $(function() {
     }, 420);
   };
 
-  $('.js-sbanner-close').on( 'tap swiperight', function() {
+  $('.js-sbanner-close').on( 'tap', function() {
     $body.addClass( 'is-sbanner-hide' );
-    setTimeout(function() {
-      $(this).hide();
-    }, 1500);
+    $(this).hide();
   });
 
   var Touchy = (function() {
