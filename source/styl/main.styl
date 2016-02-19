@@ -9,6 +9,12 @@ body
   transition opacity 90ms linear, margin-top 220ms
   opacity 0
   +mobile()
+    &.banner-v3-is-show
+      position fixed
+      overflow hidden
+    &.is-sbanner-hide
+      position static
+      overflow auto
     +landscape()
       position fixed
       top 0
@@ -149,7 +155,7 @@ b
     left 0
     z-index 99
     transform translateY( -51% )
-    transition transform 300ms ease-in-out
+    transition transform 320ms
     &.is-open
       transform translateY( 0 )
     &.is-hide
@@ -178,7 +184,7 @@ b
     margin-left rems(60)
     FigginsBold()
     letter-spacing .25em
-    transition color 300ms ease-in-out
+    transition color 220ms
     font-size rems(9)
     &:first-child
       margin-left rems( 72 )
@@ -227,7 +233,7 @@ b
     margin-left rems(60)
     FigginsBold()
     letter-spacing .25em
-    transition color 300ms ease-in-out
+    transition color 220ms
     color $grey
     font-size rems(9)
     &:first-child
@@ -253,14 +259,14 @@ b
       width 30px
       height 30px
       transform rotate(0)
-      transition transform 400ms ease
+      transition transform 400ms
     &-item
       position absolute
       top 0
       display block
       width 30px
       height 30px
-      transition transform 400ms ease, opacity 200ms ease
+      transition transform 400ms, opacity 220ms
     &-line
       position absolute
       display block
@@ -269,7 +275,7 @@ b
       background-color $grey
       top 50%
       margin-top -1px
-      transition transform 400ms ease, top 400ms ease, background-color 300ms ease-in-out
+      transition transform 400ms, top 400ms, background-color 220ms, opacity 120ms
       &.top
         transform translateY(-9px)
       &.bottom
@@ -296,41 +302,25 @@ b
 // sbanner
 [data-os="android"]
   display none
-  .android
-    display block
-    +between( 768px, 1024px )
-      display none
-    +desktop()
-      display none
-  .android .banner-v2-is-show &
-    display none
-    +desktop()
-      display none
   .android .banner-v1-is-show &
     display block
     +between( 768px, 1024px )
       display none
-  .android .is-sbanner-hide &
+    +desktop()
+      display none
+  .is-sbanner-hide &
     display none
 
 
 [data-os="ios"]
   display none
-  .ios
-    display block
-    +between( 768px, 1024px )
-      display none
-    +desktop()
-      display none
-  .ios .banner-v2-is-show &
-    display none
-    +desktop()
-      display none
   .ios .banner-v1-is-show &
     display block
     +between( 768px, 1024px )
       display none
-  .ios .is-sbanner-hide &
+    +desktop()
+      display none
+  .is-sbanner-hide &
     display none
 
 [data-os="universal"]
@@ -341,6 +331,19 @@ b
       display none
     +desktop()
       display none
+  .is-sbanner-hide &
+    display none
+
+[data-os="universal-big"]
+  display none
+  .banner-v3-is-show &
+    display block
+    +between( 768px, 1024px )
+      display none
+    +desktop()
+      display none
+  .is-sbanner-hide &
+    display none
 
 .sbanner
   position fixed
@@ -358,23 +361,57 @@ b
     border-bottom 1px solid $grey
   [data-os="universal"]&
     background-color #f9d9e4
-  .is-sbanner-hide &
-    display none
+  [data-os="universal-big"]&
+    height rems(370)
+    top 50%
+    margin-top rems(-185)
+    background-color transparent
+    border-bottom none
+    transition transform 300ms linear
+    .is-sbanner-hide &
+      display block
+      transform translate3d(150%, 20%, 0) rotate(30deg)
   &-body
     cf()
     padding 0 rems( 18 )
+    [data-os="universal-big"] &
+      position absolute
+      top rems(12)
+      right rems(22)
+      bottom rems(12)
+      left rems(22)
+      background-color #f9d9e4
+  &-title
+    [data-os="universal-big"] &
+      text-align center
+      margin-top rems(36)
+      margin-bottom rems(48)
+      &-text
+        font-size rems(24)
+        color $grey
+        letter-spacing .15em
   &-close
     align( vertical )
     left 0
     line-height 0
     height rems(18)
     width rems(18)
+    [data-os="universal-big"] &
+      transform none
+      top rems(3)
+      right rems(12)
+      left auto
     &-body
       position relative
       top rems(4)
       left rems(5)
       width rems(11)
       height rems(11)
+      [data-os="universal-big"] &
+        top rems(6)
+        left rems(7)
+        width rems(14)
+        height rems(14)
     &-item
       display block
       position absolute
@@ -382,6 +419,9 @@ b
       left 0
       width rems(11)
       height rems(11)
+      [data-os="universal-big"] &
+        width rems(14)
+        height rems(14)
       &.top
         transform rotate( -45deg )
       &.bottom
@@ -398,6 +438,10 @@ b
         height 2px
         top rems(4.5)
         border-radius 1px
+      [data-os="universal-big"] &
+        background-color $zero
+        top rems(6.5)
+        width rems(14)
   &-logo
     align( vertical )
     .icon
@@ -416,14 +460,21 @@ b
       margin-left rems(66)
       font-size rems(11)
       color #444444
-    [data-os="universal"] &
+    [data-os="universal"] &,
+    [data-os="universal-big"] &
       margin-left 0
       font-size rems(10)
       Figgins()
+    [data-os="universal-big"] &
+      text-transform uppercase
+      letter-spacing .15em
+      text-align center
     .upc
       text-transform uppercase
       letter-spacing .08em
       [data-os="universal"] &
+        letter-spacing .18em
+      [data-os="universal-big"] &
         letter-spacing .18em
     .big
       font-size rems(12)
@@ -460,116 +511,58 @@ b
       padding-bottom rems(9)
       border-radius 7px
       font-size rems(10)
-    [data-os="universal"] &
+    [data-os="universal"] &,
+    [data-os="universal-big"] &
       font-size rems(10)
       background-color white
       padding rems(8) rems(29)
       border-radius 7px
       color $zero
       margin-top -3px
+    [data-os="universal-big"] &
+      transform none
+      position static
+      display inline-block
+      margin-top rems(14)
 
-.touch-burger
-  position absolute
-  left 0
-  right 0
-  top -100%
-  transform translateY( -100% )
-  transition transform 260ms
-  opacity 0
-  &.is-show
-    top rems(62)
-    opacity 1
-  &.is-open
-    transform translateY( -1px )
-  &-body
-    background-color #1a1a1a
-  &-link
-    display block
-    color white
-    vertical-align middle
-    border-bottom 1px solid white
-    display block
-    height rems( 62 )
-    line-height rems( 62 )
-    text-align center
-    letter-spacing .16em
-    &:last-child
-      border-bottom none
-
-.touch-fixline
-  background-color #1a1a1a
-  height rems( 62 )
-  text-align center
-  line-height rems( 62 )
-  margin-top rems( 72 )
-  position relative
-  z-index 998
-  transition margin-top 220ms
+.touch-menu
+  margin-top rems(72)
+  transition margin 220ms
   .is-sbanner-hide &
+    margin-top 0
+  .banner-v3-is-show &
     margin-top 0
   +desktop()
     display none
-  .i-logo-bold
-    color white
-    font-size rems( 42 )
-    top rems(6)
-  &-body
-    position relative
-    z-index 2
-    height rems( 62 )
-    background-color #1a1a1a
-  .close
-    position absolute
-    right rems( 18 )
-    top 50%
-    margin-top -17px
-    width 30px
-    height 30px
-    cursor pointer
-    &-body
-      position relative
-      width 30px
-      height 30px
-      transform rotate(0)
-      transition transform 220ms ease
-    &-item
-      position absolute
-      top 0
-      display block
-      width 30px
-      height 30px
-      transition transform 220ms ease, opacity 200ms ease
-    &-line
-      position absolute
-      display block
-      width 30px
-      height 1px
-      background-color white
-      top 50%
-      transition transform 220ms ease, top 220ms ease, background-color 300ms ease-in-out
-      &.top
-        transform translateY(-9px)
-      &.bottom
-        transform translateY( 9px )
-      &.center
-        opacity 1
-
-    &.is-open
-      .close-body
-        transform rotate( 90deg )
-      .close-item
-        &.top
-          transform rotate( -45deg )
-        &.bottom
-          transform rotate( 45deg )
-        &.center
-          opacity 0
-      .close-line
-        &.top
-          transform translate( 0 )
-        &.bottom
-          transform translate( 0 )
-
+  &-bottom
+    border-top 1px solid alpha( $grey, 50% )
+    margin-top 0
+  &-line
+    cf()
+    padding-top rems(12)
+    padding-bottom rems(12)
+    border-bottom 1px solid alpha( $grey, 50% )
+    &-a
+      padding-left rems(18)
+      padding-top rems(10)
+      padding-bottom rems(10)
+  .icon
+    font-size rems(34)
+    top rems(5)
+  &-link
+    display block
+    width 50%
+    float left
+    font-size rems(13)
+    padding 0 rems(18)
+    Figgins()
+    letter-spacing .15em
+    margin 0
+    &.is-touch
+      color $gold
+  &-main-link
+    .is-touch&
+      color $gold
 /* WRAP
    ========================================================================== */
 .wrap
@@ -601,12 +594,12 @@ b
     letter-spacing .12em
     font-size rems(50)
     padding 0 rems(18) 0
-    .i-peach
+    .i-peach-bold
       font-size rems(62)
       left rems(-2)
       bottom rems(0)
       margin-right rems(2)
-    .i-loly
+    .i-loly-bold
       position absolute
       top rems(30)
       right rems(-60)
@@ -621,11 +614,11 @@ b
         margin-left rems(-6)
       .line-a
         margin-left rems(-6)
-      .i-peach
+      .i-peach-bold
         font-size rems(104)
         left rems(-6)
-        bottom rems(-2)
-      .i-loly
+        bottom rems(0)
+      .i-loly-bold
         position absolute
         top rems(55)
         right rems(-100)
@@ -640,7 +633,7 @@ b
       right rems(-5)
       margin-bottom rems(10)
       +desktop()
-        margin-bottom rems(8)
+        margin-bottom rems(16)
       img
         display block
         height .85em
@@ -676,7 +669,7 @@ b
         margin-bottom rems(12)
         font-size rems(18)
         letter-spacing .12em
-        transition color 300ms ease-in-out
+        transition color 220ms
         &:last-of-type
           margin-bottom 0
         +hover()
@@ -1033,14 +1026,13 @@ b
   &_link
     font-size 1.5em
     letter-spacing .12em
-    .club &
-      color $white
+    .is-touch&
+      color $gold
   .i-download
     top rems(6)
-    margin-right rems(6)
+    left rems(-16)
+    margin-right rems(-18)
     font-size rems(46)
-  .left-indent
-    margin-left rems(-10)
 
 
 /* ==========================================================================
@@ -1100,7 +1092,7 @@ b
 
   &-link
     border-bottom 1px solid
-    transition color 300ms ease-in-out
+    transition color 220ms
     +hover()
       color $grey
 
@@ -1127,6 +1119,9 @@ b
       font-size rems(9)
       letter-spacing .12em
       margin 0 0 rems(8)
+    .icon
+      .is-touch&
+        color $gold
 
   &-mail
     margin-top rems(-5)
@@ -1137,7 +1132,8 @@ b
 
   &-link
     border-bottom 1px solid
-    transition color 300ms ease-in-out
+    .is-touch&
+      color $gold
 
   &-txt
     margin 0 0 rems(24)
@@ -1147,23 +1143,23 @@ b
   .no-margin
     margin-bottom 0
 
+  a.is-touch
+    color $gold
+
 
 .footer
-  border-top 1px solid alpha( $grey, 50% )
   margin 0 auto 0
   padding rems(27) 0
   line-height 1.5
   color $grey
   cf()
+  +desktop()
+    border-top 1px solid alpha( $grey, 50% )
 
   .social-icon
     transition color 220ms
     +hover()
       color $zero
-
-  .i-pure
-    font-size rems(9)
-    margin-right rems(24)
 
   .i-right-arr
     top rems(1.5)
@@ -1212,9 +1208,10 @@ b
 
   a
     border-bottom 1px solid
-    transition color 300ms
-    +hover()
-      color $grey
+    +desktop()
+      transition color 220ms
+      +hover()
+        color $grey
 
 .faq,
 .policy,
@@ -1234,7 +1231,7 @@ b
       line-height rems(80)
       background-color rgba(white, .99)
       transform translateY(0)
-      transition transform 220ms ease-in-out
+      transition transform 220ms
       &.is-hide
         transform translateY(-6.25em);
     &-inside
@@ -1257,7 +1254,7 @@ b
         margin-left rems(60)
         FigginsBold()
         letter-spacing .25em
-        transition color 300ms ease-in-out
+        transition color 220ms
         color $grey
         font-size rems(9)
         +hover()
@@ -1313,7 +1310,7 @@ b
         FigginsThin()
         color $grey
         border-bottom 1px solid transparent
-        transition border-bottom 300ms ease-in-out, color 300ms ease-in-out
+        transition border-bottom 220ms, color 220ms
         .i-pure
           top rems(0)
           margin-right rems( 40 )
@@ -1386,6 +1383,8 @@ b
         margin-bottom rems(155)
         padding-top rems( 20 )
         width 79%
+      .pure-up
+        font-size .72em
     &-col
       &.first
         float left
@@ -1405,41 +1404,20 @@ b
         position relative
         margin 0 0 rems(6)
         font-size rems(28)
+      .pure-up
+        font-size 1em
       &-number
         &.icon
           position relative
           left rems(-1)
-          bottom rems(16)
+          bottom rems(14)
           font-size rems(46)
           color $grey
-          &.i-17
-            font-size rems(41)
-            bottom rems(18)
-          &.i-20,
-          &.i-19,
-          &.i-18,
-          &.i-21
-            left rems(-1)
-            font-size rems(60)
-            bottom rems(18)
-          &.i-20
-            left rems(-5)
-            font-size rems(54)
-            bottom rems(18)
-          &.i-21
-            botom rems(18)
           +desktop()
             position absolute
-            top rems(27)
+            top rems(25)
             left rems(-4)
-            &.i-17
-              top rems(30)
-            &.i-21,
-            &.i-20,
-            &.i-19,
-            &.i-18
-              top rems(24)
-              font-size rems( 58 )
+            font-size rems(58)
       .i-pure
         color $zero
         position relative
@@ -1499,8 +1477,10 @@ b
 
   .uppercase
     font-size .72em
-    letter-spacing .12em
+    letter-spacing .15em
     text-transform uppercase
+    &.pure
+      font-size .72em
 
   .to-top
     position absolute
@@ -1519,7 +1499,7 @@ b
   .article-link
     Figgins()
     border-bottom 1px solid
-    transition color 300ms ease-in-out
+    transition color 220ms
     +hover()
       color $grey
       border-bottom 1px solid
@@ -1595,7 +1575,7 @@ b
     color $grey
     &-link
       Figgins()
-      transition color 300ms ease-in-out
+      transition color 220ms
       border-bottom 1px solid
       color $zero
       +hover()
@@ -1767,9 +1747,9 @@ b
         position relative
         width 50%
         height 100%
-        padding rems(20) rems(16)
+        padding rems(13) rems(16)
         +desktop()
-          padding rems(34) rems(30)
+          padding rems(24) rems(30)
       &-caption
         position absolute
         margin 0
@@ -1788,19 +1768,20 @@ b
           +desktop()
             font-size rems( 28 )
       &-title
-        margin-left rems(-4)
-        font-size rems( 12 )
-        margin-top rems(0)
+        margin-left rems(-2)
+        height rems(9)
+        background-image url('/assets/img/pure.svg')
+        background-size contain
+        background-repeat no-repeat
         +desktop()
-          margin-top rems(5)
-          font-size rems( 30 )
+          height rems(23)
       &-networks
         position relative
         margin-left rems(-4)
-        margin-top rems(16)
+        margin-top rems(14)
         +desktop()
           margin-left rems(-4)
-          margin-top rems(33)
+          margin-top rems(24)
         &-link
           margin-right rems(11)
           font-size rems(34)
@@ -1808,17 +1789,15 @@ b
           transition color 220ms
           &:last-of-type
             margin-right 0
+          +mobile()
+            transition color 0ms
+            &.is-touch
+              color $gold
           +desktop()
             margin-right rems(10)
             font-size rems(48)
           +hover()
             color $zero
-          &.i-vk
-            position relative
-            font-size rems(31)
-            +desktop()
-              top rems(1.5)
-              font-size rems(44)
 
   .footer-social-link
     transition color 220ms
@@ -1875,3 +1854,8 @@ b
         font-size .73em
         text-transform uppercase
         letter-spacing .12em
+
+.pure-up
+  text-transform uppercase
+  font-size 1em
+  letter-spacing .15em

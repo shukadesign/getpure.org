@@ -4,8 +4,6 @@
   font-family 'Figgins'
   src url('/assets/fonts/Figgins/Figgins.woff') format('woff'),
       url('/assets/fonts/Figgins/Figgins.ttf') format('truetype')
-  font-weight 300
-  font-style normal
 
 Figgins()
   font-family 'Figgins', Arial, sans
@@ -15,32 +13,17 @@ Figgins()
 @font-face
   font-family 'Figgins Thin'
   src url('/assets/fonts/Figgins/FigginsThin.woff') format('woff'),
-    url('/assets/fonts/Figgins/FigginsThin.ttf') format('truetype')
-  font-weight 300
-  font-style normal
+      url('/assets/fonts/Figgins/FigginsThin.ttf') format('truetype')
 
 FigginsThin()
   font-family 'Figgins Thin', Arial, sans
-
-// Figgins Bold
-// ============================================================================
-@font-face
-  font-family 'Figgins Bold'
-  src url('/assets/fonts/Figgins/FigginsBold.woff') format('woff'),
-    url('/assets/fonts/Figgins/FigginsBold.ttf') format('truetype')
-  font-weight 700
-  font-style normal
-
-FigginsBold()
-  font-family 'Figgins Bold', Arial, sans
 
 // William
 // ============================================================================
 @font-face
   font-family 'William'
-  src url('../../assets/fonts/William/William.eot') format('eot')
-  src url('../../assets/fonts/William/William.woff') format('woff'),
-      url('../../assets/fonts/William/William.ttf') format('truetype')
+  src url('/assets/fonts/William/William.woff') format('woff'),
+      url('/assets/fonts/William/William.ttf') format('truetype')
 
 William()
   font-family 'William', Arial, sans-serif
@@ -49,13 +32,13 @@ William()
 // ============================================================================
 @font-face
   font-family 'William Italic'
-  src url('../../assets/fonts/William/WilliamItalic.woff') format('woff'),
-      url('./../assets/fonts/William/WilliamItalic.ttf') format('truetype')
-  font-weight normal
-  font-style normal
+  src url('/assets/fonts/William/WilliamItalic.woff') format('woff'),
+      url('/assets/fonts/William/WilliamItalic.ttf') format('truetype')
 
 WilliamItalic()
   font-family 'William Italic', Georgia, sans-serif
+  font-weight normal
+  font-style normal
 
 // Pure
 // ============================================================================
@@ -303,3 +286,11 @@ WilliamItalic()
 .i-19
   &:before
     content "\34"
+
+.i-peach-bold
+  &:before
+    content: "\28"
+
+.i-loly-bold
+  &:before
+    content: "\29"

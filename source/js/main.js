@@ -330,7 +330,7 @@ $(function() {
         scale: 1,
         viewFactor: 0.4,
         reset: true,
-        viewOffset: { bottom : w.innerHeight()-180 },
+        viewOffset: { bottom : w.innerHeight()-100 },
         delay: 300
       };
 
@@ -399,8 +399,59 @@ $(function() {
     }, 420);
   };
 
-  $('.js-sbanner-close').on( 'tap', function() {
+  $('.js-sbanner-close').on( 'tap swiperight', function() {
     $body.addClass( 'is-sbanner-hide' );
+    setTimeout(function() {
+      $(this).hide();
+    }, 1500);
+  });
+
+  var Touchy = (function() {
+    var $elem, modifer, active = false;
+
+    function _addStyle() {
+      if( !active ) {
+        $(this).addClass( modifer );
+        active = true;
+      }
+    };
+
+    function _removeStyle() {
+      if( active ) {
+        $(this).removeClass( modifer );
+        active = false;
+      }
+    };
+
+    function _callback() {
+      var $this = $(this);
+
+      if( $this.attr( 'href' ) !== undefined ) {
+        event.preventDefault();
+        $this.removeClass( modifer );
+        setTimeout(function() {
+          window.location = $this.attr('href');
+        }, 100);
+      };
+
+      return false;
+    };
+
+    return {
+      init: function( elem, isclass ) {
+        $elem = elem, modifer = isclass || 'is-touch';
+        elem.on( 'tapstart',  _addStyle )
+          .on( 'tapend', _removeStyle )
+          .on( 'tap', _callback );
+      }
+    }
+  })();
+
+  $('[data-os="universal-big"]').on( 'swiperight', function( e, touch ) {
+    $body.addClass( 'is-sbanner-hide' );
+    setTimeout(function() {
+      $(this).hide();
+    }, 1500);
   });
 
   client.setClasses();
@@ -412,5 +463,6 @@ $(function() {
   ScrollToSection.init();
   ToggleNavigation.init();
   ShareRules.init();
+  Touchy.init( $('[data-action="touch"]') );
 
 });
