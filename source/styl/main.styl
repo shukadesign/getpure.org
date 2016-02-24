@@ -48,7 +48,7 @@ b
   color $white
 
 .bold
-  FigginsBold()
+  Figgins()
 
 .normal
 .sans
@@ -182,7 +182,7 @@ b
     color $grey
     padding 1em 0 // << Fitts
     margin-left rems(60)
-    FigginsBold()
+    Figgins()
     letter-spacing .25em
     transition color 220ms
     font-size rems(9)
@@ -231,7 +231,7 @@ b
   &_link
     padding 1em 0 // << Fitts
     margin-left rems(60)
-    FigginsBold()
+    Figgins()
     letter-spacing .25em
     transition color 220ms
     color $grey
@@ -630,10 +630,10 @@ b
     &_pure
       position relative
       display block
-      right rems(-5)
-      margin-bottom rems(10)
+      left rems(-1)
+      margin-bottom rems(6)
       +desktop()
-        margin-bottom rems(16)
+        margin-bottom rems(20)
       img
         display block
         height .85em
@@ -652,6 +652,11 @@ b
       width rems( 260 )
       height rems( 4.5 )
       left rems( 305 )
+
+  .relative
+    position relative
+    bottom rems(-2)
+
 
   &_download
     display none
@@ -786,7 +791,7 @@ b
         padding 0 rems(27)
 
   &_title
-    FigginsBold()
+    Figgins()
     font-size rems(24)
     margin-bottom rems(20)
     letter-spacing .3em
@@ -987,7 +992,7 @@ b
         padding 0 rems(27)
 
   &_title
-    FigginsBold()
+    Figgins()
     letter-spacing .3em
     font-size rems(13)
     color $zero
@@ -1252,7 +1257,7 @@ b
       &-link
         padding 1em 0 // << Fitts
         margin-left rems(60)
-        FigginsBold()
+        Figgins()
         letter-spacing .25em
         transition color 220ms
         color $grey
@@ -1490,7 +1495,7 @@ b
     background-image url('/assets/img/touch-arr.png')
     background-size 100%
     right 0
-    top rems(74)
+    top rems(82)
     z-index 99
     +desktop()
       display none

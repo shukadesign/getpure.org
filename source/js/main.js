@@ -330,7 +330,7 @@ $(function() {
         scale: 1,
         viewFactor: 0.4,
         reset: true,
-        viewOffset: { bottom : w.innerHeight()-100 },
+        viewOffset: { bottom : w.innerHeight()-150 },
         delay: 300
       };
 
