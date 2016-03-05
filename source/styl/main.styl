@@ -218,7 +218,8 @@ b
   &_logo
     display block
     float left
-    line-height rems(87)
+    line-height rems(80)
+    margin-top rems(4)
     font-size rems(33)
 
   &_list
@@ -597,11 +598,12 @@ b
     .i-peach-bold
       font-size rems(62)
       left rems(-2)
-      bottom rems(0)
       margin-right rems(2)
+      top rems(5)
+      margin-top rems(-62)
     .i-loly-bold
       position absolute
-      top rems(30)
+      top rems(0)
       right rems(-60)
       font-size rems(62)
     +desktop()
@@ -618,11 +620,12 @@ b
         font-size rems(104)
         left rems(-6)
         bottom rems(0)
+        margin-bottom rems(-104)
       .i-loly-bold
         position absolute
-        top rems(35)
         right rems(-100)
         font-size rems(118)
+        margin-top rems(-22)
     +between( 768px, 1024px )
       +portrait()
         padding 0 rems(27)
@@ -671,7 +674,7 @@ b
       &_link
         color $grey
         display inline-block
-        margin-bottom rems(12)
+        margin-bottom rems(6)
         font-size rems(18)
         letter-spacing .12em
         transition color 220ms
@@ -683,10 +686,14 @@ b
           font-size rems(38)
           margin-left rems(4)
           margin-right rems(4)
+          top rems(6)
+          margin-bottom rems(-38)
         .i-play
           font-size rems(38)
+          top rems(7)
           margin-left rems(7)
           margin-right rems(4)
+          margin-bottom rems(-38)
 
   &_image
     overflow hidden
@@ -803,8 +810,9 @@ b
 
     .i-shell-2
       font-size rems(46)
-      top rems(-2)
+      top rems(3)
       margin 0 rems(5)
+      margin-bottom rems(-46)
 
   &_p
     margin 0
@@ -893,9 +901,10 @@ b
       display none
       +desktop()
         display inline-block
-        top rems(2)
+        top rems(7)
         font-size rems(52)
         margin 0 rems(10)
+        margin-bottom rems(-52)
 
   &_p
     @extend .anonim_p
@@ -961,7 +970,8 @@ b
 
   .i-rose
     font-size rems(46)
-    top rems(4)
+    top rems(10)
+    margin-bottom rems(-46)
     margin 0 rems(5)
     margin-left rems(8)
 
@@ -1034,10 +1044,11 @@ b
     .is-touch&
       color $gold
   .i-download
-    top rems(6)
+    top rems(8)
     left rems(-16)
     margin-right rems(-18)
     font-size rems(46)
+    margin-bottom rems(-46)
 
 
 /* ==========================================================================
@@ -1072,7 +1083,7 @@ b
 
   &-social
     &-title
-      margin 0 0 rems(8)
+      margin 0 0 rems(2)
       font-size rems(9)
       letter-spacing .12em
 
@@ -1083,7 +1094,7 @@ b
     &-title
       margin 0
       margin-top rems(20)
-      margin-bottom rems(6)
+      margin-bottom rems(2)
       font-size rems(9)
       letter-spacing .12em
 
@@ -1123,7 +1134,7 @@ b
     &-title
       font-size rems(9)
       letter-spacing .12em
-      margin 0 0 rems(8)
+      margin 0 0 rems(4)
     .icon
       .is-touch&
         color $gold
@@ -1133,7 +1144,7 @@ b
     &-title
       font-size rems(9)
       letter-spacing .12em
-      margin 0 0 rems(8)
+      margin 0 0 rems(5)
 
   &-link
     border-bottom 1px solid
@@ -1167,10 +1178,10 @@ b
       color $zero
 
   .i-right-arr
-    top rems(1.5)
+    top rems(4)
     font-size rems(20)
     +mobile()
-      top rems(1.5)
+      top rems(4)
 
   .i-fb
     margin-right rems(6)
@@ -1290,16 +1301,20 @@ b
       position relative
       &-sym
         position absolute
-        top rems( 18 )
+        top rems( 12 )
         left rems(-2)
         color $grey
         transition color 220ms
+        &.vis
+          position absolute
+          top rems( 10 )
         +desktop()
           position relative
-          top rems(0)
+          top rems(4)
+          margin-bottom -1em
           &.vis
             position absolute
-            top rems( 17 )
+            top rems( 16 )
         &.icon
           font-size rems(30)
       &-indent
@@ -1327,40 +1342,50 @@ b
           display inline-block
           &.i-tube
             font-size rems( 32 )
-            top rems(5)
+            top rems(8)
             margin-left rems(2)
+            margin-bottom rems(-32)
           &.i-vint
             font-size rems( 31 )
-            top rems(-2)
+            top rems(2)
+            margin-bottom rems(-31)
           &.i-storm
             font-size rems( 34 )
-            top rems(4)
+            top rems(10)
             margin-left rems(2)
             margin-right rems(-3)
+            margin-bottom rems(-34)
           &.i-vint-3
             font-size rems( 36 )
-            top rems(-2)
+            top rems(3)
             margin-left rems(2)
             margin-right rems(-2)
+            margin-bottom rems(-36)
           &.i-money
             font-size rems( 30 )
-            top rems(3)
+            top rems(5)
             margin-left rems(3)
+            margin-bottom rems(-30)
           &.i-cuffs
             font-size rems( 30 )
-            top rems(2)
+            top rems(5)
             margin 0 rems(2)
+            margin-bottom rems(-30)
           &.i-mark
             font-size rems( 40 )
+            margin-bottom rems(-40)
+            top rems(8)
           &.i-rose
             font-size rems( 36 )
-            top rems(4)
+            margin-bottom rems(-36)
+            top rems(6)
             margin-left rems(3)
           &.i-sign
             font-size rems(33)
+            margin-bottom rems(-33)
             margin-left rems(-1)
             margin-right rems(-4)
-            top rems(4)
+            top rems(7)
       +hover()
         .contents-link-sym
           color $zero
@@ -1415,14 +1440,16 @@ b
         &.icon
           position relative
           left rems(-1)
-          bottom rems(14)
+          bottom rems(-2)
           font-size rems(46)
+          margin-bottom rems(-46)
           color $grey
           +desktop()
             position absolute
-            top rems(10)
+            top rems(-4)
             left rems(-4)
             font-size rems(58)
+            margin-bottom rems(-58)
       .i-pure
         color $zero
         position relative
