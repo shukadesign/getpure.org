@@ -144,7 +144,7 @@ $(function() {
 
     function _share() {
       event.preventDefault();
-        window.open( $(this).attr( 'href' ), 'fb-share', 'top=' + dialogTop + ',left=' + dialogLeft + ',menubar=0,toolbar=0,status=0,location=0,width=' + dialogW + ',height=' + dialogH );
+      window.open( $( event.target ).attr( 'href' ), 'fb-share', 'top=' + dialogTop + ',left=' + dialogLeft + ',menubar=0,toolbar=0,status=0,location=0,width=' + dialogW + ',height=' + dialogH );
     };
 
     return {
