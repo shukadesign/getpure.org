@@ -375,12 +375,12 @@ $(function() {
         // Change download link for iOS
         // In banner
         $('.is-fluid').attr({
-          'href': '//itunes.apple.com/ru/app/pure-anonimnye-blizkie-znakomstva/id690661663?mt=8',
+          'href': 'https://itunes.apple.com/app/id690661663',
           'id': 'apple-download-link-mobile-banner'
         });
         // In prefooter
         $('.download_link').attr({
-          'href': '//itunes.apple.com/ru/app/pure-anonimnye-blizkie-znakomstva/id690661663?mt=8',
+          'href': 'https://itunes.apple.com/app/id690661663',
           'id': 'apple-download-link-mobile-prefooter'
         });
       };
