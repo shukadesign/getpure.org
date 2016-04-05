@@ -105,37 +105,6 @@ $(function() {
     };
   })();
 
-  // Hide smart banner
-  // var hideBanner = (function() {
-
-  //   var $bannerLink;
-
-  //   if( cookie.get('downloaded') ) {
-  //     $body.addClass('old');
-  //   };
-
-  //   function _hide() {
-  //     $body.addClass('is-sbanner-hide');
-  //   };
-
-  //   function _writeToStorage() {
-  //     cookie.set({
-  //      downloaded: true
-  //     }, {
-  //      expires: 80
-  //     });
-  //   };
-
-  //   return {
-  //     init: function() {
-  //       $bannerLink = $('.js-sbanner-link');
-  //       $bannerLink.on( 'tap', function() {
-  //         _writeToStorage();
-  //       });
-  //     }
-  //   }
-  // })();
-
   var ShareRules = (function() {
     var dialogH = 500, dialogW = 768, dialogTop, dialogLeft, $link;
 
@@ -399,11 +368,6 @@ $(function() {
     }, 420);
   };
 
-  $('.js-sbanner-close').on( 'tap', function() {
-    $body.addClass( 'is-sbanner-hide' );
-    $(this).hide();
-  });
-
   var Touchy = (function() {
     var $elem, modifer, active = false;
 
@@ -445,12 +409,6 @@ $(function() {
     }
   })();
 
-  $('[data-os="universal-big"]').on( 'swiperight', function( e, touch ) {
-    $body.addClass( 'is-sbanner-hide' );
-    setTimeout(function() {
-      $(this).hide();
-    }, 1500);
-  });
 
   client.setClasses();
   ChangeLink.init();

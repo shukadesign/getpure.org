@@ -12,25 +12,48 @@ var autoprefix = require('gulp-autoprefixer'),
   styl = require('gulp-stylus'),
   merge = require('merge-stream'),
   combineMQ = require('gulp-combine-mq'),
-  uglify = require('gulp-uglify');
+  uglify = require('gulp-uglify'),
+  atomizer = require('gulp-atomizer');
+
+// Settings for atomic css
+var settings = require( './settings.js' );
 
 // Create development server
 gulp.task('server', function() {
   var path;
+
   browserSync({
     notify: false,
     open:   false,
     server: './',
     ui:     false
   });
+
   path = {
     styl: './source/styl/**/*',
     js:   './source/js/**/*',
     html: './**/*.html'
   };
-  gulp.watch(path.html, reload);
+
+  gulp.watch(path.html, ['atomize'], reload);
   gulp.watch(path.styl, ['styl']);
   gulp.watch(path.js, ['js']);
+});
+
+gulp.task('atomize', function() {
+  return gulp.src( './**/*.html' )
+    .pipe( atomizer( 'atoms.css', settings ))
+    .pipe(combineMQ())
+    .pipe(csso({
+      restructure: false
+    }))
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe( gulp.dest( './public/css/' ) )
+    .pipe(reload({
+      stream: true
+    }));
 });
 
 // Compile .styl files to public derictory

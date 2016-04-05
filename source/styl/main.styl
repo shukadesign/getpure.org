@@ -300,51 +300,14 @@ b
         &.bottom
           transform translate( 0 )
 
-// sbanner
-[data-os="android"]
-  display none
-  .android .banner-v1-is-show &
-    display block
-    +between( 768px, 1024px )
-      display none
-    +desktop()
-      display none
-  .android .is-sbanner-hide.banner-v1-is-show &
-    display none
-
-
-[data-os="ios"]
-  display none
-  .ios .banner-v1-is-show &
-    display block
-    +between( 768px, 1024px )
-      display none
-    +desktop()
-      display none
-  .ios .is-sbanner-hide.banner-v1-is-show &
-    display none
-
 [data-os="universal"]
-  display none
-  .banner-v2-is-show &
-    display block
-    +between( 768px, 1024px )
-      display none
-    +desktop()
-      display none
-  .is-sbanner-hide.banner-v2-is-show &
+  display block
+  +between( 768px, 1024px )
     display none
-
-[data-os="universal-big"]
-  display none
-  .banner-v3-is-show &
-    display block
-    +between( 768px, 1024px )
-      display none
-    +desktop()
-      display none
-  .is-sbanner-hide.banner-v3-is-show &
+  +desktop()
     display none
+.is-sbanner-hide &
+  display none
 
 .sbanner
   position fixed
@@ -568,7 +531,7 @@ b
    ========================================================================== */
 .wrap
   padding-bottom rems(18)
-  padding-top rems(24)
+  padding-top rems(90)
   .club &
     padding-bottom 0
   +desktop()
@@ -1398,7 +1361,7 @@ b
           color $zero
 
   .wrap
-    padding rems(24) 1.125em 0
+    padding rems(90) 1.125em 0
     margin auto
     +desktop()
       position relative
@@ -1641,7 +1604,7 @@ b
 
 .terms
   .wrap
-    padding-top rems(48)
+    padding-top rems(90)
   .article
     &-unit
       +mobile()
