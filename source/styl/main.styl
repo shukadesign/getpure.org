@@ -154,7 +154,6 @@ b
     right 0
     left 0
     z-index 99
-    transform translateY( -51% )
     transition transform 320ms
     &.is-open
       transform translateY( 0 )
@@ -230,8 +229,7 @@ b
     height rems(80)
 
   &_link
-    padding 1em 0 // << Fitts
-    margin-left rems(60)
+    float right
     Figgins()
     letter-spacing .25em
     transition color 220ms
@@ -241,64 +239,10 @@ b
       margin-left 0
     +hover()
       color $zero
-
-  .close
-    position absolute
-    right 0
-    top 50%
-    margin-top -17px
-    width 30px
-    height 30px
-    cursor pointer
-    +hover()
-      .close-line
-        background-color $zero
-        &.light
-          background-color #fff
-    &-body
-      position relative
-      width 30px
-      height 30px
-      transform rotate(0)
-      transition transform 400ms
-    &-item
-      position absolute
-      top 0
-      display block
-      width 30px
-      height 30px
-      transition transform 400ms, opacity 220ms
-    &-line
-      position absolute
-      display block
-      width 30px
-      height 2px
-      background-color $grey
-      top 50%
-      margin-top -1px
-      transition transform 400ms, top 400ms, background-color 220ms, opacity 120ms
-      &.top
-        transform translateY(-9px)
-      &.bottom
-        transform translateY( 9px )
-      &.center
-        opacity 1
-
-    &.is-open
-      .close-body
-        transform rotate( 90deg )
-      .close-item
-        &.top
-          transform rotate( -45deg )
-        &.bottom
-          transform rotate( 45deg )
-        &.center
-          opacity 0
-      .close-line
-        &.top
-          transform translate( 0 )
-        &.bottom
-          transform translate( 0 )
+    &[data-link="current"]
+      color $white
+      +hover()
+        color $white
 
 [data-os="universal"]
   display block
@@ -491,34 +435,17 @@ b
 
 .touch-menu
   margin-top rems(72)
-  transition margin 220ms
-  .is-sbanner-hide &
-    margin-top 0
-  .banner-v3-is-show &
-    margin-top 0
+  line-height rems(60)
+  padding 0 rems(18)
   +desktop()
     display none
-  &-bottom
-    border-top 1px solid alpha( $grey, 50% )
-    margin-top 0
   &-line
     cf()
-    padding-top rems(12)
-    padding-bottom rems(12)
-    border-bottom 1px solid alpha( $grey, 50% )
-    &-a
-      padding-left rems(18)
-      padding-top rems(10)
-      padding-bottom rems(10)
   .icon
     font-size rems(34)
     top rems(5)
   &-link
-    display block
-    width 50%
-    float left
     font-size rems(13)
-    padding 0 rems(18)
     Figgins()
     letter-spacing .15em
     margin 0
@@ -530,8 +457,6 @@ b
 /* WRAP
    ========================================================================== */
 .wrap
-  padding-bottom rems(18)
-  padding-top rems(90)
   .club &
     padding-bottom 0
   +desktop()
@@ -1361,7 +1286,7 @@ b
           color $zero
 
   .wrap
-    padding rems(90) 1.125em 0
+    padding 0 1.125em 0
     margin auto
     +desktop()
       position relative
@@ -1604,7 +1529,7 @@ b
 
 .terms
   .wrap
-    padding-top rems(90)
+    padding-top 0
   .article
     &-unit
       +mobile()

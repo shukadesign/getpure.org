@@ -90,16 +90,18 @@ $(function() {
 
     return {
       init: function() {
-        $section = $('.js-section');
-        $wrap = $('.wrap');
-        $downer = $('.js-downer');
+        $('.js-downer').exists(function() {
+          $section = $('.js-section');
+          $wrap = $('.wrap');
+          $downer = $(this);
 
-        $downer.on( 'click', _upper );
+          $downer.on( 'click', _upper );
 
-        w.on( 'load resize', function() {
-          _createPosArr();
-        }).on( 'scroll resize', function() {
-          _update();
+          w.on( 'load resize', function() {
+            _createPosArr();
+          }).on( 'scroll resize', function() {
+            _update();
+          });
         });
       }
     };
@@ -157,34 +159,7 @@ $(function() {
 
   // Toggle navbar
   var ToggleNavigation = (function() {
-    var $nav, $trigger,  $touchTrigger, $touchBurger, $fixline, $touchFixline,Y = 0, newY, closed = true, touchClosed = true, anima = false;
-
-    function toggle( _this ) {
-      if ( closed ) {
-        _this.addClass( 'is-open' );
-        $fixline.addClass( 'is-open' );
-        closed = false;
-      } else {
-        _this.removeClass( 'is-open' );
-        $fixline.removeClass( 'is-open' );
-        closed = true;
-      };
-    };
-
-    function _toggleTouch( _this ) {
-      if ( touchClosed ) {
-        _this.addClass( 'is-open' );
-        $touchBurger.addClass( 'is-show' ).addClass( 'is-open' );
-        touchClosed = false;
-      } else {
-        _this.removeClass( 'is-open' );
-        $touchBurger.removeClass( 'is-open' );
-        setTimeout(function() {
-          $touchBurger.removeClass( 'is-show' )
-        }, 300);
-        touchClosed = true;
-      };
-    };
+    var $nav, $trigger, Y = 0, newY, closed = true;
 
     function _changeClass() {
       newY = w.scrollTop();
@@ -198,7 +173,7 @@ $(function() {
       } else {
         $nav.addClass('is-hide').removeClass( 'is-open' );
         $trigger.removeClass( 'is-open' );
-        closed = touchClosed = true;
+        closed = true;
       };
 
       Y = newY;
@@ -209,30 +184,9 @@ $(function() {
       init: function( elem ) {
         $( '.fixline' ).exists( function() {
           $nav = $(this),
-          $trigger = $( '.js-burger-trigger' ),
-          $touchTrigger = $( '.js-touch-burger-trigger' ),
-          $touchBurger = $( '.touch-burger' )
-          $fixline = $( '.fixline' ),
-          $touchFixline = $( '.touch-fixline' );
-
-          $body.on( 'swipeup', function() {
-            $touchFixline.addClass( 'is-hide' );
-            $touchTrigger.removeClass( 'is-open' );
-            $touchBurger.removeClass( 'is-open' );
-            setTimeout(function() {
-              $touchBurger.removeClass( 'is-show' )
-            }, 300);
-          });
+          $trigger = $( '.js-burger-trigger' );
 
           w.on( 'scroll', _changeClass );
-
-          $touchTrigger.on( 'tap', function() {
-            _toggleTouch( $(this) );
-          });
-
-          $trigger.on( 'tap', function() {
-            toggle( $(this) );
-          });
         });
       }
     }
