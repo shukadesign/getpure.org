@@ -920,7 +920,7 @@ b
         margin-right rems(48)
         font-size rems( 19 )
 
-/* ==========================================================================
+  /* ==========================================================================
    DOWNLOAD
    ========================================================================== */
 .download
@@ -971,7 +971,9 @@ b
         padding 0 rems(27)
 
   &-cell
-    column( 1/4, cycle: 4 )
+    column( 1/4, cycle: 3 )
+    &.footer_lg-sip
+      column(2/4)
 
   &-social
     &-title
@@ -1019,7 +1021,8 @@ b
     width 50%
 
   &-sip
-    margin-bottom rems(25)
+    padding 0 rems(18)
+    margin-top rems(40)
 
   &-social
     margin-bottom rems(26)
@@ -1089,11 +1092,8 @@ b
 
 
 .colophone
-  margin-top rems(18)
+  margin-top rems(15)
   font-size 0
-  +desktop()
-    margin-top rems(-4)
-    column(1/5)
 
   &-title
     display inline-block
@@ -1102,17 +1102,16 @@ b
     font-size rems(9)
     letter-spacing .12em
     line-height 1.5
-    +desktop()
-      width 75%
 
   &-image
-    width 26%
+    width 30px
     margin-left rems(-8)
     padding-right rems(3)
     display inline-block
     vertical-align middle
     +desktop()
-      width 25%
+      width 50px
+
 
   a
     border-bottom 1px solid
@@ -1783,3 +1782,11 @@ b
   text-transform uppercase
   font-size 1em
   letter-spacing .15em
+
+.footer-sip-text
+  font-size rems(13)
+  letter-spacing .15em
+  line-height 1.5
+  margin-top 1em
+  +desktop()
+    font-size rems(18)
