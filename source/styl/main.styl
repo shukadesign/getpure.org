@@ -7,7 +7,6 @@ body
   background-color $white
   -webkit-tap-highlight-color transparent
   transition opacity 90ms linear, margin-top 220ms
-  opacity 0
   +mobile()
     &.banner-v3-is-show
       position fixed
@@ -22,8 +21,6 @@ body
       bottom 0
       left 0
       overflow hidden
-  &.load
-    opacity 1
   +desktop()
     position relative
     min-width 768px
@@ -1791,3 +1788,23 @@ b
   margin-top rems(10)
   +desktop()
     font-size rems(18)
+
+.preloader
+  position fixed
+  top 0
+  bottom 0
+  right 0
+  left 0
+  background-color #fff
+  z-index 999
+  transition opacity 220ms
+  .PreloadImage
+    position absolute
+    transform-origin center
+    transition opacity 220ms
+    margin-top -35px
+    margin-left -35px
+    top 50%
+    left 50%
+  .load &
+    opacity 0

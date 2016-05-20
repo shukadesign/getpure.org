@@ -27,6 +27,35 @@ $(function() {
     else return 0;
   };
 
+  var __i = 0;
+
+  function rotation() {
+    $('.jsPreloadIcon').velocity({
+      rotateZ: '+=360'
+    }, {
+      duration: 1400,
+      complete: function( elem ) {
+        if( __i <= 2 ) {
+          $(elem).attr('src','/assets/img/' + ++__i + '-preload.png');
+          rotation();
+        } else {
+          $(elem).attr('src','/assets/img/0-preload.png');
+          __i = 0;
+          rotation();
+        }
+      }
+    });
+
+  };
+
+  rotation();
+
+  // Init
+  window.onload = function() {
+    $body.addClass('load');
+    $('.jsPreloadIcon').velocity("stop");
+  };
+
   // Animations for .downer && scroll to top
   var Downer = (function() {
     var $downer, $wrap, $section, pos = [], a = null, b = null, y;
@@ -315,12 +344,6 @@ $(function() {
   })();
 
 
-  // Init
-  window.onload = function() {
-    setTimeout( function() {
-      $body.addClass('load');
-    }, 420);
-  };
 
   var Touchy = (function() {
     var $elem, modifer, active = false;
