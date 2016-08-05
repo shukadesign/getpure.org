@@ -16,13 +16,15 @@
       font-family: "William Text 2";
     }
     .Notify {
-      position: fixed;
+      display: table;
+      text-align: center;
       white-space: nowrap;
-      top: 40%;
-      left: 50%;
-      -webkit-transform: translate(-50%,-50%);
-      transform: translate(-50%,-50%);
+      width: 100%;
+      height: 100%;
       color: #1a1a1a;
+    }
+    .dtbc {
+      vertical-align: middle;
     }
     .dib {
       display: inline-block;
@@ -39,7 +41,9 @@
   <body>
   <span onClick="$zopim.livechat.window.show()" id='show'></span>
   <div class="Notify">
-    <span class="dib vam mend10">Wait a second, please</span> <div class="dib vam" data-icon="ei-spinner-3"></div>
+    <div style="display: table-cell; vertical-align: middle;">
+      <span class="dib vam mend10">Wait a second, please</span> <div class="dib vam" data-icon="ei-spinner-3"></div>
+    </div>
   </div>
 
 
@@ -58,7 +62,7 @@
 
   <script>
     $zopim(function() {
-      setTimeout( function(){ $('#show').trigger( 'click' ); }, 1000 );
+      setTimeout( function(){ $('#show').trigger( 'click' ); }, 2000 );
     });
   </script>
   <!-- End Scripts -->
