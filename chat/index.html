@@ -1,0 +1,65 @@
+<html>
+
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1">
+
+  <link rel="stylesheet" href="//fonts.typotheque.com/WF-026554-009202.css">
+
+  <!-- Evil Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/evil-icons/1.8.0/evil-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/evil-icons/1.8.0/evil-icons.min.js"></script>
+  <!-- End Evil Icons -->
+
+  <style>
+    body {
+      background-color: #fff;
+      font-family: "William Text 2";
+    }
+    .Notify {
+      position: fixed;
+      white-space: nowrap;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      color: #1a1a1a;
+    }
+    .dib {
+      display: inline-block;
+    }
+    .vam {
+      vertical-align: middle;
+    }
+    .mend10 {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+  <body>
+  <span onClick="$zopim.livechat.window.show()" id='show'></span>
+  <div class="Notify">
+    <span class="dib vam mend10">Wait a second, please</span> <div class="dib vam" data-icon="ei-spinner-3"></div>
+  </div>
+
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/jquery/3.1.0/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+
+  <!--Start of Zopim Live Chat Script-->
+  <script type="text/javascript">
+  window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+  d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+  _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+  $.src="//v2.zopim.com/?46PnbdyNgsUSBq9UEWANBUMJeGjFEKVZ";z.t=+new Date;$.
+  type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+  </script>
+  <!--End of Zopim Live Chat Script-->
+
+  <script>
+    $zopim(function() {
+      setTimeout( function(){ $('#show').trigger( 'click' ); }, 1000 );
+    });
+  </script>
+  <!-- End Scripts -->
+  </body>
+</html>
